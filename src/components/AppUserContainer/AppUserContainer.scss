@@ -1,0 +1,50 @@
+.AppUserContainer {
+  &__User {
+    img {
+      height: 260px;
+      width: 269px;
+    }
+    
+    &_Container {
+      &_vcard {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &-fullname {
+          font-size: 26px;
+          line-height: 1.25;
+          color: #24292f;
+
+          display: block;
+          overflow: hidden;
+        }
+
+        &-username {
+          display: block;
+          overflow: hidden;
+
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 24px;
+          color: #57606a;
+        }
+      }
+    }
+
+    &_Profile {
+      &_Note {
+        overflow: hidden;
+        margin-bottom: 16px;
+
+        font-size: 16px;
+        line-height: 1.5;
+        color: #24292f;
+      }
+    }
+
+    &_Connection{
+        
+    }
+  }
+}
