@@ -49,7 +49,6 @@ const { reducer } = createSlice({
       state.isLoadingUser = true;
     });
     builder.addCase(getUser.fulfilled, (state, { payload }) => {
-      console.log("getUser.fulfilled: ", payload);
       state.isLoadingUser = false;
       state.user = payload;
     });

@@ -29,6 +29,23 @@ function Main() {
   const user = useSelector(githubSelectors.user);
   const isLoadingUser = useSelector(githubSelectors.isLoadingUser);
 
+  const repos = useSelector(githubSelectors.repos);
+  const isLoadingRepos = useSelector(githubSelectors.isLoadingRepos);
+
+  const organizations = useSelector(githubSelectors.organizations);
+  const isLoadingOrganization = useSelector(
+    githubSelectors.isLoadingOrganization
+  );
+
+  const followers = useSelector(githubSelectors.followers);
+  const isLoadingFollowers = useSelector(githubSelectors.isLoadingFollowers);
+
+  const followings = useSelector(githubSelectors.followings);
+  const isLoadingFollowing = useSelector(githubSelectors.isLoadingFollowing);
+
+  console.log("followers: ", followers);
+  console.log("followings: ", followings);
+
   useEffect(() => {
     if (params && params.username) {
       setSearch(params.username);
@@ -40,6 +57,8 @@ function Main() {
       dispatch(getUserOrganizations(params.username));
       dispatch(getUserProjects(params.username));
       dispatch(getUserPackages(params.username));
+    } else {
+      setSearch("");
     }
 
     window.scrollTo(0, 0);
@@ -73,16 +92,28 @@ function Main() {
                 <Col xl={9}>
                   <Tabs defaultActiveKey="repos" className="mb-3">
                     <Tab eventKey="repos" title="Repositories">
-                      <AppRepositories />
+                      <AppRepositories
+                        repos={repos}
+                        isLoading={isLoadingRepos}
+                      />
                     </Tab>
                     <Tab eventKey="orgs" title="Organizations">
-                      <AppOrganizations />
+                      <AppOrganizations
+                        organizations={organizations}
+                        isLoading={isLoadingOrganization}
+                      />
                     </Tab>
                     <Tab eventKey="followers" title="Followers">
-                      <AppFollowersFollowingLists />
+                      <AppFollowersFollowingLists
+                        users={followers}
+                        isLoading={isLoadingFollowers}
+                      />
                     </Tab>
                     <Tab eventKey="following" title="Following">
-                      <AppFollowersFollowingLists />
+                      <AppFollowersFollowingLists
+                        users={followings}
+                        isLoading={isLoadingFollowing}
+                      />
                     </Tab>
                   </Tabs>
                 </Col>
